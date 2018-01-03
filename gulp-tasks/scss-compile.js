@@ -25,7 +25,7 @@ function compileScss() {
 }
 
 gulp.task('watch-scss', () => {
-	console.log('watching scss...');
+	compileScss();
 	watch(`${pkg.gulp_config.src_path}/**/*.scss`, () => {
 		compileScss();
 	});
