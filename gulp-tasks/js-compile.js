@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const plumber = require('gulp-plumber');
 const watch = require('gulp-watch');
 const webpack = require('webpack-stream');
 const logger = require('gulp-logger');
@@ -8,6 +9,7 @@ const pkg = require('../package.json');
 function compileWebpack(env) {
 	process.env.NODE_ENV = env;
 	return gulp.src(`./${pkg.gulp_config.src_path}/app.js`)
+		.pipe(plumber())
 		.pipe(logger({
 			before: 'Starting compileWebpack - ' + new Date(),
 			after: 'compileWebpack complete - ' + new Date(),
@@ -29,7 +31,11 @@ function compileWebpack(env) {
 				]
 			}
 		}))
-		.pipe(gulp.dest(`./${pkg.gulp_config.build_path}/`));
+		.pipe(gulp.dest(`./${pkg.gulp_config.build_path}/`))
+		.on('error', (err) => {
+			console.log(err);
+			this.emit('end');
+		});
 }
 
 gulp.task('watch-js', () => {
