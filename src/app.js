@@ -1,14 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-// import {Provider} from 'react-redux';
-import store from './app/app_state/reducer';
+import {Route, Switch} from 'react-router-dom';
+import {ConnectedRouter} from 'react-router-redux';
+import {store, history} from './app/app_state/reducer';
+import {Provider} from 'react-redux';
 
 import ComponentA from './app/components/component_a';
 
 ReactDOM.render(
-	<div store={store}>
-		React Online!
-		<ComponentA />
-	</div>,
+	<Provider store={store}>
+		<ConnectedRouter history={history}>
+			<Switch>
+				<Route exact path='/' component={ComponentA} />
+			</Switch>
+		</ConnectedRouter>
+	</Provider>,
 	document.getElementById('root')
 );
