@@ -1,5 +1,5 @@
 const AppDefaultState = {
-	lastAppAction : '',
+	lastAppAction : ''
 };
 
 export default AppDefaultState;

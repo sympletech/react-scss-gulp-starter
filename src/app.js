@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom';
 import {Route, Switch} from 'react-router-dom';
 import {ConnectedRouter} from 'react-router-redux';
 import {store, history} from './app/app_state/reducer';

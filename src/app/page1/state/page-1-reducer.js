@@ -5,11 +5,12 @@ const page1Reducer = (state = Page1DefaultState, action) =>{
 	let newState;
 	switch(action.type){
 		case actions.pageActionID:
-			return {...state, ...action.payload};
-
+			newState = Object.assign({}, state, {payload:action.payload});
+			break;
 		default:
-			return {...state};
+			newState = {...state};
 	}
+	return newState;
 };
 
 export default page1Reducer;

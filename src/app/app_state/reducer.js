@@ -11,9 +11,6 @@ import page2Reducer from '../page2/state/page-2-reducer';
 const appReducer = (state = AppDefaultState, action) =>{
 	let newState;
 	switch(action.type){
-		//*******************************************
-		//  Generic Action
-		//*******************************************
 		case actions.appActionID:
 			newState = {...state};
 			newState.lastAppAction = action.payload;
@@ -22,7 +19,6 @@ const appReducer = (state = AppDefaultState, action) =>{
 		default:
 			return {...state};
 	}
-
 };
 
 export const history = createHistory();

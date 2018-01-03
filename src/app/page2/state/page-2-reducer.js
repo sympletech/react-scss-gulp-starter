@@ -1,15 +1,17 @@
 import Page2DefaultState from './page-2-default-state';
 import * as actions from './page-2-actions';
 
-const page2Reducer = (state = Page2DefaultState, action) =>{
+const page2Reducer = (state = Page2DefaultState, action) => {
 	let newState;
-	switch(action.type){
+	switch (action.type) {
 		case actions.pageActionID:
-			return {...state, ...action.payload};
+			newState = Object.assign({}, state, {payload:action.payload});
+			break;
 
 		default:
-			return {...state};
+			newState = {...state};
 	}
+	return newState;
 };
 
 export default page2Reducer;
